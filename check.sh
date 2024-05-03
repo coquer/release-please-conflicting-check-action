@@ -1,3 +1,4 @@
+#!/bin/bash
 set -euo pipefail
 pending_prs=$(gh pr list --repo "$REPO" --label "autorelease: pending" --state open --json number --jq '.[].number')
 need_rebase=""
