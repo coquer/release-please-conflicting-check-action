@@ -19,7 +19,7 @@ runs:
       id: needs_rebase
       env:
         REPO: ${{ inputs.repo }}
-        TOKEN: ${{ inputs.token }}
+        GITHUB_TOKEN: ${{ inputs.token }}
       run: |
         set -euo pipefail
         pending_prs=$(gh pr list --repo "$REPO" --label "autorelease: pending" --state open --json number --jq '.[].number')
