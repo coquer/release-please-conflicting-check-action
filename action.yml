@@ -20,4 +20,4 @@ runs:
       env:
         REPO: ${{ inputs.repo }}
         TOKEN: ${{ inputs.token }}
-      run: ./check.sh
+      run: bash ./check.sh
