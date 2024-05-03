@@ -1,0 +1,23 @@
+name: Conflicts Checker
+description: Check for conflicts in the PR for release please in mono-repo
+inputs:
+  repo:
+    description: 'The repository to check for conflicts'
+    required: true
+  token:
+    description: 'The token to use for the repository'
+    required: true
+outputs:
+  need_rebase:
+    value: ${{ steps.needs_rebase.outputs.need_rebase }}
+    description: 'Whether the PR needs a rebase'
+runs:
+  using: 'composite'
+  steps:
+    - name: Needs rebase
+      shell: bash
+      id: needs_rebase
+      env:
+        REPO: ${{ inputs.repo }}
+        TOKEN: ${{ inputs.token }}
+      run: check.sh
